@@ -1,279 +1,243 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shoki — Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoki — Shop in Future</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724; /* deep midnight */
-      --card:#0b1220;
-      --muted:#9aa4b2;
-      --accent:#ff6b6b; /* warm coral */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --radius:16px;
-      color-scheme: dark;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,#071024 0%, #081428 40%, #071022 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:24px;
-    }
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffd166);display:flex;align-items:center;justify-content:center;font-weight:800;color:#071022;font-size:20px;box-shadow:0 6px 24px rgba(255,107,107,0.12);}
-    .brand h1{margin:0;font-size:20px}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}nav{display:flex;gap:12px}
-.nav-link{padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600}
-.nav-link:hover{color:var(--accent);transform:translateY(-2px)}
-
-.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
-.hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:20px;box-shadow:0 10px 40px rgba(2,6,23,0.6);}
-.hero h2{margin:0 0 8px 0;font-size:28px}
-.hero p{margin:0 0 18px 0;color:var(--muted)}
-.cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#ff8a8a);color:#071022;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(255,107,107,0.14);transform:translateZ(0);}
-.cta:active{transform:translateY(2px)}
-
-/* product grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:22px}
-
-.card{background:var(--card);border-radius:16px;padding:14px;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s;}
-.card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
-.img-wrap{height:180px;display:flex;align-items:center;justify-content:center}
-.img-wrap img{max-width:100%;max-height:100%;transition:transform .45s cubic-bezier(.2,.9,.3,1)}
-.card:hover .img-wrap img{transform:translateY(-8px) rotate(-2deg) scale(1.03)}
-.meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-.price{font-weight:800}
-.muted{color:var(--muted);font-size:13px}
-
-.add-btn{background:linear-gradient(90deg,#2b4a6f,#1e3a5a);padding:8px 12px;border-radius:10px;border:none;color:#dfefff;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
-.add-btn:active{transform:translateY(1px)}
-
-/* floating cart */
-.cart-btn{position:fixed;right:26px;bottom:26px;background:linear-gradient(90deg,var(--accent),#ff8a8a);width:64px;height:64px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#071022;box-shadow:0 18px 40px rgba(255,107,107,0.16);z-index:60;border:none}
-.cart-count{position:absolute;right:-6px;top:-6px;background:#071022;color:#fff;padding:6px;border-radius:22px;font-size:12px;min-width:28px;text-align:center}
-
-/* flying animation */
-.flying{position:fixed;z-index:1000;pointer-events:none;transition:transform .8s cubic-bezier(.2,.9,.3,1), opacity .8s}
-
-/* subtle background shapes */
-.bg-shape{position:absolute;right:-80px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,107,107,0.08), transparent 40%), radial-gradient(circle at 70% 70%, rgba(255,209,102,0.04), transparent 30%);filter:blur(30px);transform:translateZ(0)}
-
-/* footer */
-footer{margin-top:36px;color:var(--muted);font-size:13px}
-
-/* small screens */
-@media (max-width:880px){
-  .hero{grid-template-columns:1fr;}
-  .hero-card{order:2}
-}
-
-/* micro animations */
-@keyframes float-up{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
-.pulse{animation:float-up 3s ease-in-out infinite}
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="bg-shape" aria-hidden="true"></div>
-  <header>
-    <div class="brand">
-      <div class="logo">S</div>
-      <div>
-        <h1>Shoki</h1>
-        <p>Shop minimalist — fast checkout</p>
-      </div>
-    </div><nav aria-label="Main navigation">
-  <a class="nav-link" href="#categories">Categories</a>
-  <a class="nav-link" href="#offers">Offers</a>
-  <a class="nav-link" href="#help">Help</a>
-</nav>
+  <div id="cursor"></div>
+  <div id="cursor-glow"></div>
 
-  </header>  <main>
-    <section class="hero">
-      <div class="hero-card">
-        <h2>Fresh picks for you</h2>
-        <p>Handpicked products, guest checkout, and lightning-fast delivery.
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">SHOKI</div>
+      <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="hero-section">
+    <div class="particles" id="particles"></div>
+    <div id="three-canvas"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="line">Welcome to</span>
+          <span class="line gradient-text">SHOKI</span>
+        </h1>
+        <p class="hero-subtitle">
+          <span class="line">Shop in Style.</span>
+          <span class="line">Shop in Future.</span>
         </p>
-        <div style="display:flex;gap:12px;align-items:center">
-          <a class="cta" href="#products" id="shopNow">Shop Now</a>
-          <div style="font-size:13px;color:var(--muted)">Free delivery on orders ₹499+</div>
-        </div><div style="margin-top:18px;display:flex;gap:10px;align-items:center">
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:44px;height:44px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center">🔥</div>
-        <div>
-          <div style="font-weight:700">Trending</div>
-          <div class="muted">New arrivals</div>
-        </div>
       </div>
 
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:44px;height:44px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center">⏱️</div>
-        <div>
-          <div style="font-weight:700">Fast ship</div>
-          <div class="muted">2-4 days</div>
-        </div>
+      <div class="hero-search">
+        <input type="text" placeholder="Search products..." class="search-input">
+        <button class="search-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="btn-primary magnetic">Shop Now</button>
+        <button class="btn-outline magnetic">Explore Products</button>
       </div>
     </div>
-  </div>
 
-  <div style="border-radius:20px;overflow:hidden;position:relative;">
-    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hero" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.05) contrast(.95);">
-  </div>
-</section>
-
-<section style="margin-top:26px">
-  <h3 style="margin:0 0 10px 0">Featured Products</h3>
-  <div id="products" class="grid" aria-live="polite"></div>
-</section>
-
-<div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-  <input id="search" placeholder="Search products..." style="padding:10px;border-radius:12px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.02);min-width:240px;color:inherit">
-  <button id="searchBtn" class="add-btn">Search</button>
-</div>
-
-  </main>  <button id="cartBtn" class="cart-btn" aria-label="Open cart">
-    🛒
-    <div id="cartCount" class="cart-count">0</div>
-  </button>  <footer>
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div>© Shoki — Simple shopping. No accounts.</div>
-      <div style="color:var(--muted)">Privacy · Returns · Terms</div>
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
     </div>
-  </footer>  <template id="productTpl">
-    <div class="card">
-      <div class="img-wrap"><img src="" alt=""></div>
-      <div style="margin-top:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-weight:700">Product</div>
-          <div class="price">₹0</div>
-        </div>
-        <div class="muted" style="margin-top:6px">Short description</div>
-      </div>
-      <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
-        <button class="add-btn">Add to cart</button>
-        <button class="muted" style="background:none;border:none;cursor:pointer;font-weight:700">View</button>
-      </div>
-    </div>
-  </template>  <script>
-    // Sample product data — you'll replace this with your backend or static JSON file in next files
-    const products = [
-      {id:1,title:'Minimal Leather Wallet',price:799,img:'https://images.unsplash.com/photo-1600180758890-4b60e305a2a8?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',desc:'Slim, handcrafted leather wallet.'},
-      {id:2,title:'Echo Bluetooth Earbuds',price:1499,img:'https://images.unsplash.com/photo-1518444024656-7b0b3c91b4f6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',desc:'Clear sound, long battery.'},
-      {id:3,title:'Canvas Tote Bag',price:599,img:'https://images.unsplash.com/photo-1520975911600-3bde9a6425b9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',desc:'Eco-friendly daily tote.'},
-      {id:4,title:'Aero Water Bottle',price:499,img:'https://images.unsplash.com/photo-1515548210703-83f8b9a6b6e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',desc:'Keeps drinks cold 24h.'},
-      {id:5,title:'Soft Knit Beanie',price:299,img:'https://images.unsplash.com/photo-1519741495723-6d6d8f6b06d9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',desc:'Cozy & warm.'}
-    ];
+  </section>
 
-    const productsEl = document.getElementById('products');
-    const tpl = document.getElementById('productTpl');
-    const cartCountEl = document.getElementById('cartCount');
-    const cartBtn = document.getElementById('cartBtn');
+  <section id="featured" class="featured-section">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">Curated collection of premium items</p>
 
-    let cart = [];
-
-    function renderProducts(list){
-      productsEl.innerHTML = '';
-      list.forEach(p=>{
-        const node = tpl.content.cloneNode(true);
-        node.querySelector('img').src = p.img;
-        node.querySelector('img').alt = p.title;
-        node.querySelector('.price').textContent = '₹' + p.price;
-        node.querySelector('[style\="font-weight:700"]')?.textContent = p.title;
-        node.querySelector('.muted').textContent = p.desc;
-        const addBtn = node.querySelector('.add-btn');
-        addBtn.addEventListener('click', (e)=>{
-          addToCart(p, e);
-        });
-        const viewBtn = node.querySelectorAll('button')[1];
-        viewBtn.addEventListener('click', ()=>viewProduct(p));
-        productsEl.appendChild(node);
-      });
-    }
-
-    function addToCart(product, e){
-      cart.push(product);
-      updateCartCount();
-      animateAddToCart(e.target.closest('.card').querySelector('img'));
-    }
-
-    function updateCartCount(){
-      cartCountEl.textContent = cart.length;
-      // small pulse on cart
-      cartBtn.classList.add('pulse');
-      setTimeout(()=>cartBtn.classList.remove('pulse'), 900);
-    }
-
-    function animateAddToCart(imgEl){
-      const rect = imgEl.getBoundingClientRect();
-      const clone = imgEl.cloneNode(true);
-      clone.style.width = rect.width + 'px';
-      clone.style.height = rect.height + 'px';
-      clone.className = 'flying';
-      clone.style.left = rect.left + 'px';
-      clone.style.top = rect.top + 'px';
-      clone.style.opacity = 0.95;
-      document.body.appendChild(clone);
-
-      // target
-      const cartRect = cartBtn.getBoundingClientRect();
-      requestAnimationFrame(()=>{
-        clone.style.transform = `translate(${cartRect.left - rect.left}px, ${cartRect.top - rect.top}px) scale(.2)`;
-        clone.style.opacity = '0.2';
-      });
-      setTimeout(()=>clone.remove(), 900);
-    }
-
-    function viewProduct(p){
-      // lightweight modal-like details using native dialog
-      const modal = document.createElement('dialog');
-      modal.style.borderRadius='14px';
-      modal.style.padding='18px';
-      modal.style.width='min(720px,95vw)';
-      modal.innerHTML = `
-        <div style="display:flex;gap:16px;align-items:flex-start;">
-          <img src="${p.img}" alt="${p.title}" style="width:260px;height:260px;object-fit:cover;border-radius:12px;">
-          <div style="flex:1">
-            <h3 style="margin:0 0 6px 0">${p.title}</h3>
-            <div class="muted">${p.desc}</div>
-            <div style="margin-top:14px;font-weight:800">₹${p.price}</div>
-            <div style="margin-top:18px;display:flex;gap:10px">
-              <button class="add-btn" id="modalAdd">Add to cart</button>
-              <button style="background:none;border:none;color:var(--muted);cursor:pointer;font-weight:700" id="closeBtn">Close</button>
+      <div class="products-grid" id="featured-grid">
+        <div class="product-card" data-tilt>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=800&q=80" alt="Product 1">
+            <div class="product-badge">New</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Neon Runner X1</h3>
+            <p class="product-desc">Premium athletic footwear</p>
+            <div class="product-footer">
+              <span class="product-price">₹4,999</span>
+              <button class="btn-add-cart" data-product="1">
+                <span>Add to Cart</span>
+                <span class="btn-icon">+</span>
+              </button>
             </div>
           </div>
         </div>
-      `;
-      document.body.appendChild(modal);
-      modal.showModal();
-      modal.querySelector('#closeBtn').addEventListener('click', ()=>{modal.close();modal.remove();});
-      modal.querySelector('#modalAdd').addEventListener('click', ()=>{addToCart(p,{target:modal});modal.close();modal.remove();});
-    }
 
-    // search
-    document.getElementById('searchBtn').addEventListener('click', ()=>{
-      const q = document.getElementById('search').value.trim().toLowerCase();
-      if(!q) return renderProducts(products);
-      const res = products.filter(p=> p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
-      renderProducts(res);
-    });
+        <div class="product-card" data-tilt>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Product 2">
+            <div class="product-badge trending">Trending</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Aurora Watch</h3>
+            <p class="product-desc">Luxury smartwatch</p>
+            <div class="product-footer">
+              <span class="product-price">₹12,999</span>
+              <button class="btn-add-cart" data-product="2">
+                <span>Add to Cart</span>
+                <span class="btn-icon">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
-    // sample anchor behaviour
-    document.getElementById('shopNow').addEventListener('click', (e)=>{e.preventDefault();document.getElementById('products').scrollIntoView({behavior:'smooth'});});
+        <div class="product-card" data-tilt>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80" alt="Product 3">
+            <div class="product-badge">Hot</div>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Shadow Sunglasses</h3>
+            <p class="product-desc">Designer eyewear</p>
+            <div class="product-footer">
+              <span class="product-price">₹2,499</span>
+              <button class="btn-add-cart" data-product="3">
+                <span>Add to Cart</span>
+                <span class="btn-icon">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
-    // initial render
-    renderProducts(products);
+        <div class="product-card" data-tilt>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1610824352934-c10d87b700cc?w=800&q=80" alt="Product 4">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Cyber Backpack</h3>
+            <p class="product-desc">Tech-ready travel gear</p>
+            <div class="product-footer">
+              <span class="product-price">₹3,999</span>
+              <button class="btn-add-cart" data-product="4">
+                <span>Add to Cart</span>
+                <span class="btn-icon">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </script></body>
-      </html>
+  <section id="showcase" class="showcase-section">
+    <div class="showcase-container">
+      <div class="showcase-3d">
+        <div id="showcase-canvas"></div>
+      </div>
+      <div class="showcase-content">
+        <div class="showcase-item" data-color="#A761FF">
+          <h3>Premium Materials</h3>
+          <p>Crafted with the finest materials for lasting quality</p>
+        </div>
+        <div class="showcase-item" data-color="#00C8FF">
+          <h3>Innovative Design</h3>
+          <p>Next-generation aesthetics meet functionality</p>
+        </div>
+        <div class="showcase-item" data-color="#FF6B9D">
+          <h3>Limited Edition</h3>
+          <p>Exclusive pieces you won't find anywhere else</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <div class="gallery-grid">
+      <div class="gallery-item" data-speed="0.8">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80" alt="Gallery 1">
+        <div class="gallery-overlay">
+          <h3>Latest Collection</h3>
+        </div>
+      </div>
+      <div class="gallery-item" data-speed="1.2">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80" alt="Gallery 2">
+        <div class="gallery-overlay">
+          <h3>Trending Now</h3>
+        </div>
+      </div>
+      <div class="gallery-item" data-speed="0.9">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80" alt="Gallery 3">
+        <div class="gallery-overlay">
+          <h3>Best Sellers</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="newsletter-section">
+    <div class="container">
+      <h2 class="section-title">Stay Updated</h2>
+      <p class="section-subtitle">Get exclusive offers and updates</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" class="newsletter-input">
+        <button type="submit" class="btn-primary magnetic">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3 class="logo">SHOKI</h3>
+          <p>Shop in Future</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="products.html">All Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">FAQ</a>
+            <a href="#">Shipping</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Shoki. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

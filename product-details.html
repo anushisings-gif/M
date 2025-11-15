@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — Shoki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product-details.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-glow"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">SHOKI</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="product-detail-hero">
+    <div class="container">
+      <div class="product-detail-grid">
+        <div class="product-3d-viewer">
+          <div id="product-canvas"></div>
+          <div class="viewer-hint">Drag to rotate</div>
+        </div>
+
+        <div class="product-detail-info">
+          <div class="product-badge-detail">New Arrival</div>
+          <h1 class="product-detail-name">Neon Runner X1</h1>
+          <p class="product-detail-desc">
+            Premium athletic footwear designed for peak performance.
+            Featuring cutting-edge technology and futuristic aesthetics.
+          </p>
+
+          <div class="product-detail-price">₹4,999</div>
+
+          <div class="product-detail-options">
+            <div class="option-group">
+              <label>Color</label>
+              <div class="color-selector">
+                <div class="color-option selected" style="background: #000" data-color="black"></div>
+                <div class="color-option" style="background: #A761FF" data-color="purple"></div>
+                <div class="color-option" style="background: #00C8FF" data-color="blue"></div>
+                <div class="color-option" style="background: #FF6B9D" data-color="pink"></div>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Size</label>
+              <div class="size-selector">
+                <button class="size-btn">7</button>
+                <button class="size-btn">8</button>
+                <button class="size-btn selected">9</button>
+                <button class="size-btn">10</button>
+                <button class="size-btn">11</button>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label>Quantity</label>
+              <div class="quantity-selector">
+                <button class="qty-btn" id="qty-minus">−</button>
+                <span class="qty-value" id="qty-value">1</span>
+                <button class="qty-btn" id="qty-plus">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-detail-actions">
+            <button class="btn-add-to-cart" id="add-to-cart">Add to Cart</button>
+            <button class="btn-buy-now" id="buy-now">Buy Now</button>
+          </div>
+
+          <div class="product-features">
+            <div class="feature-item">
+              <div class="feature-icon">🚚</div>
+              <div>
+                <div class="feature-title">Free Shipping</div>
+                <div class="feature-desc">On orders over ₹499</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">↩️</div>
+              <div>
+                <div class="feature-title">Easy Returns</div>
+                <div class="feature-desc">30-day return policy</div>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div>
+                <div class="feature-title">Authentic</div>
+                <div class="feature-desc">100% genuine products</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-detail-section">
+    <div class="container">
+      <h2 class="section-title">Product Details</h2>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Premium Materials</h3>
+          <p>Crafted from the finest materials for lasting durability and comfort. Our products undergo rigorous quality testing.</p>
+        </div>
+        <div class="detail-card">
+          <h3>Innovative Design</h3>
+          <p>Cutting-edge design that combines style with functionality. Every detail is carefully considered.</p>
+        </div>
+        <div class="detail-card">
+          <h3>Superior Comfort</h3>
+          <p>Engineered for all-day comfort with advanced cushioning and ergonomic design principles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <div class="container">
+      <h2 class="section-title">Customer Reviews</h2>
+
+      <div class="reviews-summary">
+        <div class="rating-overview">
+          <div class="rating-score">4.8</div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-count">Based on 127 reviews</div>
+        </div>
+      </div>
+
+      <div class="reviews-list">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-name">Alex Johnson</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <p class="review-text">
+            Amazing product! The quality is outstanding and the design is simply beautiful.
+            Worth every penny.
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-name">Sarah Chen</div>
+            <div class="review-stars">★★★★☆</div>
+          </div>
+          <p class="review-text">
+            Great purchase. Very comfortable and stylish. Shipping was fast too!
+          </p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-name">Mike Torres</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <p class="review-text">
+            Exceeded my expectations. The attention to detail is impressive. Highly recommend!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recommended-section">
+    <div class="container">
+      <h2 class="section-title">You May Also Like</h2>
+
+      <div class="recommended-slider">
+        <div class="product-card-small" data-tilt>
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80" alt="Product">
+          <h3>Urban Stride</h3>
+          <p>₹6,999</p>
+        </div>
+        <div class="product-card-small" data-tilt>
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Product">
+          <h3>Aurora Watch</h3>
+          <p>₹12,999</p>
+        </div>
+        <div class="product-card-small" data-tilt>
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80" alt="Product">
+          <h3>Shadow Sunglasses</h3>
+          <p>₹2,499</p>
+        </div>
+        <div class="product-card-small" data-tilt>
+          <img src="https://images.unsplash.com/photo-1610824352934-c10d87b700cc?w=800&q=80" alt="Product">
+          <h3>Cyber Backpack</h3>
+          <p>₹3,999</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3 class="logo">SHOKI</h3>
+          <p>Shop in Future</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="products.html">All Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">FAQ</a>
+            <a href="#">Shipping</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Shoki. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="product-details.js"></script>
+</body>
+</html>

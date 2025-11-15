@@ -1,178 +1,117 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shoki – Cart</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f5f5f5;
-      animation: fadeIn 0.5s ease;
-    }header {
-  background: #fff;
-  padding: 18px 20px;
-  font-size: 22px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.back {
-  font-size: 22px;
-  cursor: pointer;
-  padding-right: 10px;
-}
-
-.cart-list {
-  padding: 20px;
-}
-
-.item {
-  background: white;
-  padding: 15px;
-  border-radius: 16px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  margin-bottom: 15px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  animation: fadeUp 0.6s ease;
-}
-
-.item img {
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
-}
-
-.info {
-  flex: 1;
-}
-
-.name {
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.price {
-  font-size: 15px;
-  margin-top: 4px;
-  color: #333;
-}
-
-.qty-box {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  gap: 10px;
-}
-
-.qty-btn {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-  color: white;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.qty-btn:active {
-  transform: scale(0.9);
-}
-
-.qty {
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.checkout {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-  animation: slideUp 0.6s ease;
-}
-
-.total {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.pay-btn {
-  background: #000;
-  color: white;
-  padding: 14px;
-  width: 100%;
-  border-radius: 30px;
-  font-size: 18px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.25s;
-}
-
-.pay-btn:active {
-  transform: scale(0.96);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — Shoki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body><header>
-  <span class="back" onclick="history.back()">←</span>
-  Cart
-</header><div class="cart-list">  <div class="item">
-    <img src="https://via.placeholder.com/200" />
-    <div class="info">
-      <div class="name">Classic Shoes</div>
-      <div class="price">₹1,499</div><div class="qty-box">
-    <div class="qty-btn">−</div>
-    <div class="qty">1</div>
-    <div class="qty-btn">+</div>
-  </div>
-</div>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-glow"></div>
 
-  </div>  <div class="item">
-    <img src="https://via.placeholder.com/200" />
-    <div class="info">
-      <div class="name">Running Shoes</div>
-      <div class="price">₹1,999</div><div class="qty-box">
-    <div class="qty-btn">−</div>
-    <div class="qty">1</div>
-    <div class="qty-btn">+</div>
-  </div>
-</div>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">SHOKI</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
 
-  </div></div><div class="checkout">
-  <div class="total">Total: ₹3,498</div>
-  <div class="pay-btn" onclick="location.href='checkout.html'">Proceed to Checkout</div>
-</div></body>
-  </html>
+  <section class="cart-hero">
+    <div class="container">
+      <h1 class="page-title">Shopping Cart</h1>
+      <p class="page-subtitle">Review your items</p>
+    </div>
+  </section>
+
+  <section class="cart-main">
+    <div class="container">
+      <div class="cart-layout">
+        <div class="cart-items" id="cart-items">
+        </div>
+
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="shipping">Free</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax</span>
+            <span id="tax">₹0</span>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">₹0</span>
+          </div>
+          <button class="btn-checkout" id="checkout-btn">
+            Proceed to Checkout
+          </button>
+          <a href="products.html" class="btn-continue">Continue Shopping</a>
+        </div>
+      </div>
+
+      <div class="empty-cart" id="empty-cart" style="display: none;">
+        <div class="empty-icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Add some products to get started</p>
+        <a href="products.html" class="btn-primary">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3 class="logo">SHOKI</h3>
+          <p>Shop in Future</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="products.html">All Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">FAQ</a>
+            <a href="#">Shipping</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Shoki. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

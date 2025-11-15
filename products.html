@@ -1,119 +1,365 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shoki – Products</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f5f5f5;
-      overflow-x: hidden;
-    }header {
-  background: #ffffff;
-  padding: 18px 20px;
-  font-size: 22px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
-  padding: 20px;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-.product-card {
-  background: white;
-  border-radius: 14px;
-  padding: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: popIn 0.5s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-.product-name {
-  font-size: 16px;
-  margin: 10px 0 4px;
-  font-weight: 600;
-}
-
-.price {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.add-btn {
-  background: #111;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  display: inline-block;
-  transition: 0.25s;
-}
-
-.add-btn:hover {
-  background: #333;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes popIn {
-  0% { opacity: 0; transform: scale(0.92); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Shoki</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body><header>
-  Shoki
-  <span style="font-size: 20px;">🛒</span>
-</header><div class="product-grid">
-  <div class="product-card" onclick="location.href='product-details.html'">
-    <img src="https://via.placeholder.com/200" />
-    <div class="product-name">Classic Shoes</div>
-    <div class="price">₹1,499</div>
-    <div class="add-btn">Add to Cart</div>
-  </div>  <div class="product-card" onclick="location.href='product-details.html'">
-    <img src="https://via.placeholder.com/200" />
-    <div class="product-name">Sport Sneakers</div>
-    <div class="price">₹2,199</div>
-    <div class="add-btn">Add to Cart</div>
-  </div>  <div class="product-card" onclick="location.href='product-details.html'">
-    <img src="https://via.placeholder.com/200" />
-    <div class="product-name">Running Shoes</div>
-    <div class="price">₹1,999</div>
-    <div class="add-btn">Add to Cart</div>
-  </div>  <div class="product-card" onclick="location.href='product-details.html'">
-    <img src="https://via.placeholder.com/200" />
-    <div class="product-name">Premium Shoes</div>
-    <div class="price">₹2,499</div>
-    <div class="add-btn">Add to Cart</div>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-glow"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">SHOKI</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="products-hero">
+    <div class="container">
+      <h1 class="page-title">Discover Products</h1>
+      <p class="page-subtitle">Curated collection of premium items</p>
+    </div>
+  </section>
+
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-wrapper">
+        <div class="filter-group">
+          <label>Category</label>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="footwear">Footwear</button>
+            <button class="filter-btn" data-category="accessories">Accessories</button>
+            <button class="filter-btn" data-category="electronics">Electronics</button>
+            <button class="filter-btn" data-category="fashion">Fashion</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Sort By</label>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-sort="featured">Featured</button>
+            <button class="filter-btn" data-sort="new">New</button>
+            <button class="filter-btn" data-sort="price-low">Price: Low to High</button>
+            <button class="filter-btn" data-sort="price-high">Price: High to Low</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Price Range: ₹<span id="price-value">0 - 20000</span></label>
+          <div class="price-slider">
+            <input type="range" id="price-min" min="0" max="20000" value="0" step="500">
+            <input type="range" id="price-max" min="0" max="20000" value="20000" step="500">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products-main">
+    <div class="container">
+      <div class="products-count">
+        <span id="results-count">12</span> Products
+      </div>
+
+      <div class="products-masonry" id="products-container">
+        <div class="product-card" data-tilt data-category="footwear" data-price="4999" data-new="true">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=800&q=80" alt="Neon Runner X1">
+            <div class="product-badge">New</div>
+            <button class="quick-view" data-id="1">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Neon Runner X1</h3>
+            <p class="product-desc">Premium athletic footwear</p>
+            <div class="product-footer">
+              <span class="product-price">₹4,999</span>
+              <button class="btn-add-cart" data-product="1">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="accessories" data-price="12999">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Aurora Watch">
+            <div class="product-badge trending">Trending</div>
+            <button class="quick-view" data-id="2">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Aurora Watch</h3>
+            <p class="product-desc">Luxury smartwatch</p>
+            <div class="product-footer">
+              <span class="product-price">₹12,999</span>
+              <button class="btn-add-cart" data-product="2">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="accessories" data-price="2499">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80" alt="Shadow Sunglasses">
+            <button class="quick-view" data-id="3">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Shadow Sunglasses</h3>
+            <p class="product-desc">Designer eyewear</p>
+            <div class="product-footer">
+              <span class="product-price">₹2,499</span>
+              <button class="btn-add-cart" data-product="3">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="fashion" data-price="3999">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1610824352934-c10d87b700cc?w=800&q=80" alt="Cyber Backpack">
+            <button class="quick-view" data-id="4">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Cyber Backpack</h3>
+            <p class="product-desc">Tech-ready travel gear</p>
+            <div class="product-footer">
+              <span class="product-price">₹3,999</span>
+              <button class="btn-add-cart" data-product="4">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="electronics" data-price="8999" data-new="true">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" alt="Bass Pro Headphones">
+            <div class="product-badge">New</div>
+            <button class="quick-view" data-id="5">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Bass Pro Headphones</h3>
+            <p class="product-desc">Wireless audio excellence</p>
+            <div class="product-footer">
+              <span class="product-price">₹8,999</span>
+              <button class="btn-add-cart" data-product="5">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="footwear" data-price="6999">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80" alt="Urban Stride">
+            <button class="quick-view" data-id="6">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Urban Stride</h3>
+            <p class="product-desc">Street style sneakers</p>
+            <div class="product-footer">
+              <span class="product-price">₹6,999</span>
+              <button class="btn-add-cart" data-product="6">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="fashion" data-price="1999">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=800&q=80" alt="Minimal Tee">
+            <button class="quick-view" data-id="7">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Minimal Tee</h3>
+            <p class="product-desc">Premium cotton basics</p>
+            <div class="product-footer">
+              <span class="product-price">₹1,999</span>
+              <button class="btn-add-cart" data-product="7">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="accessories" data-price="899">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80" alt="Leather Wallet">
+            <button class="quick-view" data-id="8">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Leather Wallet</h3>
+            <p class="product-desc">Handcrafted essentials</p>
+            <div class="product-footer">
+              <span class="product-price">₹899</span>
+              <button class="btn-add-cart" data-product="8">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="electronics" data-price="15999" data-new="true">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=800&q=80" alt="Pocket Speaker">
+            <div class="product-badge">New</div>
+            <button class="quick-view" data-id="9">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Pocket Speaker</h3>
+            <p class="product-desc">Portable sound system</p>
+            <div class="product-footer">
+              <span class="product-price">₹15,999</span>
+              <button class="btn-add-cart" data-product="9">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="fashion" data-price="5499">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80" alt="Tech Jacket">
+            <button class="quick-view" data-id="10">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Tech Jacket</h3>
+            <p class="product-desc">Weather-resistant outerwear</p>
+            <div class="product-footer">
+              <span class="product-price">₹5,499</span>
+              <button class="btn-add-cart" data-product="10">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="footwear" data-price="7999">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&q=80" alt="Elite Runner">
+            <button class="quick-view" data-id="11">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Elite Runner</h3>
+            <p class="product-desc">Performance footwear</p>
+            <div class="product-footer">
+              <span class="product-price">₹7,999</span>
+              <button class="btn-add-cart" data-product="11">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-tilt data-category="accessories" data-price="3499">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1585123334904-845d60e97b29?w=800&q=80" alt="Sport Cap">
+            <button class="quick-view" data-id="12">Quick View</button>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Sport Cap</h3>
+            <p class="product-desc">Adjustable headwear</p>
+            <div class="product-footer">
+              <span class="product-price">₹3,499</span>
+              <button class="btn-add-cart" data-product="12">
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="quick-view-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-info">
+          <h2 id="modal-name">Product Name</h2>
+          <p id="modal-desc">Product Description</p>
+          <div class="modal-price" id="modal-price">₹0</div>
+          <div class="modal-colors">
+            <label>Color:</label>
+            <div class="color-options">
+              <div class="color-option" style="background: #000" data-color="black"></div>
+              <div class="color-option" style="background: #A761FF" data-color="purple"></div>
+              <div class="color-option" style="background: #00C8FF" data-color="blue"></div>
+            </div>
+          </div>
+          <div class="modal-sizes">
+            <label>Size:</label>
+            <div class="size-options">
+              <button class="size-option">S</button>
+              <button class="size-option">M</button>
+              <button class="size-option">L</button>
+              <button class="size-option">XL</button>
+            </div>
+          </div>
+          <button class="btn-primary btn-add-modal">Add to Cart</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div></body>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3 class="logo">SHOKI</h3>
+          <p>Shop in Future</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="products.html">All Products</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">FAQ</a>
+            <a href="#">Shipping</a>
+          </div>
+          <div class="footer-col">
+            <h4>Follow</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Shoki. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="products.js"></script>
+</body>
 </html>

@@ -1,0 +1,9 @@
+{
+  "name": "shoki-ecommerce",
+  "version": "1.0.0",
+  "description": "Premium e-commerce website with 3D animations",
+  "scripts": {
+    "dev": "echo 'Dev server handled by system'",
+    "build": "echo 'Static site - no build needed'"
+  }
+}
