@@ -45,21 +45,45 @@ const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('three-canvas').appendChild(renderer.domElement);
 
-const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xA761FF,
-  metalness: 0.7,
-  roughness: 0.2,
-  wireframe: false
-});
-const torusKnot = new THREE.Mesh(geometry, material);
-scene.add(torusKnot);
+const shirtGroup = new THREE.Group();
 
-const light1 = new THREE.PointLight(0xA761FF, 2, 100);
+const bodyGeometry = new THREE.BoxGeometry(8, 10, 2);
+const bodyMaterial = new THREE.MeshStandardMaterial({
+  color: 0xE8DCC8,
+  metalness: 0.2,
+  roughness: 0.8
+});
+const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+shirtGroup.add(body);
+
+const sleeveGeometry = new THREE.BoxGeometry(3, 8, 2);
+const leftSleeve = new THREE.Mesh(sleeveGeometry, bodyMaterial);
+leftSleeve.position.set(-5.5, -1, 0);
+leftSleeve.rotation.z = 0.3;
+shirtGroup.add(leftSleeve);
+
+const rightSleeve = new THREE.Mesh(sleeveGeometry, bodyMaterial);
+rightSleeve.position.set(5.5, -1, 0);
+rightSleeve.rotation.z = -0.3;
+shirtGroup.add(rightSleeve);
+
+const collarGeometry = new THREE.BoxGeometry(4, 1.5, 1);
+const collarMaterial = new THREE.MeshStandardMaterial({
+  color: 0xD4C4B0,
+  metalness: 0.2,
+  roughness: 0.8
+});
+const collar = new THREE.Mesh(collarGeometry, collarMaterial);
+collar.position.set(0, 5.5, 0.5);
+shirtGroup.add(collar);
+
+scene.add(shirtGroup);
+
+const light1 = new THREE.PointLight(0xFFD700, 2, 100);
 light1.position.set(20, 20, 20);
 scene.add(light1);
 
-const light2 = new THREE.PointLight(0x00C8FF, 2, 100);
+const light2 = new THREE.PointLight(0xE8DCC8, 2, 100);
 light2.position.set(-20, -20, 20);
 scene.add(light2);
 
@@ -108,11 +132,11 @@ document.addEventListener('mousemove', (e) => {
 function animate() {
   requestAnimationFrame(animate);
 
-  torusKnot.rotation.x += 0.005;
-  torusKnot.rotation.y += 0.005;
+  shirtGroup.rotation.x += 0.003;
+  shirtGroup.rotation.y += 0.005;
 
-  torusKnot.rotation.x += mouseY * 0.001;
-  torusKnot.rotation.y += mouseX * 0.001;
+  shirtGroup.rotation.x += mouseY * 0.001;
+  shirtGroup.rotation.y += mouseX * 0.001;
 
   light1.position.x = Math.sin(Date.now() * 0.001) * 30;
   light1.position.y = Math.cos(Date.now() * 0.001) * 30;
@@ -169,8 +193,8 @@ ScrollTrigger.create({
   scrub: true,
   onUpdate: (self) => {
     const progress = self.progress;
-    torusKnot.rotation.y = progress * Math.PI * 2;
-    torusKnot.position.y = progress * -20;
+    shirtGroup.rotation.y = progress * Math.PI * 2;
+    shirtGroup.position.y = progress * -20;
   }
 });
 
@@ -200,16 +224,31 @@ if (showcaseCanvas) {
   showcaseRenderer.setSize(showcaseCanvas.offsetWidth, showcaseCanvas.offsetHeight);
   showcaseCanvas.appendChild(showcaseRenderer.domElement);
 
-  const shoeGeometry = new THREE.BoxGeometry(8, 4, 12);
-  const shoeMaterial = new THREE.MeshPhysicalMaterial({
-    color: 0xA761FF,
-    metalness: 0.8,
-    roughness: 0.2,
-    clearcoat: 1.0,
-    clearcoatRoughness: 0.1
+  const sweaterGroup = new THREE.Group();
+
+  const sweaterBody = new THREE.BoxGeometry(7, 9, 1.5);
+  const sweaterMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0xC9A961,
+    metalness: 0.1,
+    roughness: 0.9,
+    clearcoat: 0.1,
+    clearcoatRoughness: 0.8
   });
-  const shoe = new THREE.Mesh(shoeGeometry, shoeMaterial);
-  showcaseScene.add(shoe);
+  const sweater = new THREE.Mesh(sweaterBody, sweaterMaterial);
+  sweaterGroup.add(sweater);
+
+  const sweaterSleeve1 = new THREE.BoxGeometry(2.5, 7, 1.5);
+  const sleeve1 = new THREE.Mesh(sweaterSleeve1, sweaterMaterial);
+  sleeve1.position.set(-4.5, -1, 0);
+  sleeve1.rotation.z = 0.2;
+  sweaterGroup.add(sleeve1);
+
+  const sleeve2 = new THREE.Mesh(sweaterSleeve1, sweaterMaterial);
+  sleeve2.position.set(4.5, -1, 0);
+  sleeve2.rotation.z = -0.2;
+  sweaterGroup.add(sleeve2);
+
+  showcaseScene.add(sweaterGroup);
 
   const showcaseLight1 = new THREE.DirectionalLight(0xffffff, 1);
   showcaseLight1.position.set(5, 5, 5);
@@ -226,7 +265,7 @@ if (showcaseCanvas) {
 
   function animateShowcase() {
     requestAnimationFrame(animateShowcase);
-    shoe.rotation.y += 0.01;
+    sweaterGroup.rotation.y += 0.01;
     showcaseRenderer.render(showcaseScene, showcaseCamera);
   }
 
@@ -238,7 +277,7 @@ if (showcaseCanvas) {
     end: 'bottom center',
     scrub: true,
     onUpdate: (self) => {
-      shoe.rotation.y = self.progress * Math.PI * 2;
+      sweaterGroup.rotation.y = self.progress * Math.PI * 2;
     }
   });
 
@@ -254,7 +293,7 @@ if (showcaseCanvas) {
         toggleActions: 'play none none reverse',
         onEnter: () => {
           const color = item.dataset.color;
-          gsap.to(shoeMaterial.color, {
+          gsap.to(sweaterMaterial.color, {
             r: parseInt(color.slice(1, 3), 16) / 255,
             g: parseInt(color.slice(3, 5), 16) / 255,
             b: parseInt(color.slice(5, 7), 16) / 255,
